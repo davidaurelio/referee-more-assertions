@@ -1,0 +1,22 @@
+{
+  "name": "buster-more-assertions",
+  "version": "0.1.0",
+  "description": "Additional assertions for buster.js",
+  "main": "buster-more-assertions.js",
+  "scripts": {
+    "test": "buster test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/davidaurelio/buster-more-assertions.git"
+  },
+  "keywords": [
+    "buster.js",
+    "assertions"
+  ],
+  "author": "David Aurelio <dev@david-aurelio.com>",
+  "license": "BSD",
+  "devDependencies": {
+    "buster": "~0.6.12"
+  }
+}
