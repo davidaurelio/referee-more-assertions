@@ -1,8 +1,17 @@
-(function(require) {
-  var buster = require('buster');
+(function(buster, require) {
+  'use strict';
+
+  var moreAssertions;
+
+  // node
+  if (!buster) {
+    buster = require('buster');
+    moreAssertions = require('../buster-more-assertions');
+  } else {
+    moreAssertions = require('buster-more-assertions');
+  }
   var assert = buster.assert, refute = buster.refute;
 
-  var moreAssertions = require('../buster-more-assertions');
   var containsOnce = moreAssertions.containsOnce;
   var containsInOrder = moreAssertions.containsInOrder;
 
@@ -15,7 +24,7 @@
 
   buster.testCase('containsInOrder', {
     'with arrays': containsInOrderTest(Array),
-    //'with array-like objects': containsInOrderTest(toArrayLike)
+    'with array-like objects': containsInOrderTest(toArrayLike)
   });
 
   function containsOnceTest(array) {
@@ -65,6 +74,5 @@
     }
   }
 
-})(typeof require === 'function' ? require :
-    function(n) { return window[n.split('/').pop()]; });
+})(this.buster, require);
 

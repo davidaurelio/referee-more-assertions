@@ -17,6 +17,7 @@
   "author": "David Aurelio <dev@david-aurelio.com>",
   "license": "BSD",
   "devDependencies": {
-    "buster": "~0.6.12"
+    "buster": "~0.6.12",
+    "almond": "~0.2.5"
   }
 }
