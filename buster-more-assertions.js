@@ -7,6 +7,7 @@
   function factory(exports) {
     if (!exports) { exports = {}; }
     var assertions = buster.assertions;
+    var match = assertions.match;
 
     function slice(sequence, from) {
       return Array.prototype.slice.call(sequence, from || 0);
@@ -45,6 +46,22 @@
       refuteMessage: 'Expected ${0} not to contain ${1} in order',
       values: function(sequence) {
         return [slice(sequence), slice(arguments, 1)];
+      }
+    });
+
+    var containsMatch = exports.containsMatch = function(haystack, matcher) {
+      for (var i = 0, n = haystack.length; i < n; i += 1) {
+        if (match(haystack[i], matcher)) { return true; }
+      }
+      return false;
+    };
+    assertions.add('containsMatch', {
+      assert: containsMatch,
+      expectation: 'toContainMatch',
+      assertMessage: 'Expected ${0} to contain match for ${1}',
+      refuteMessage: 'Expected ${0} not to contain match for ${1}',
+      values: function(sequence, matcher) {
+        return [slice(sequence), matcher];
       }
     });
 

@@ -14,6 +14,7 @@
 
   var containsOnce = moreAssertions.containsOnce;
   var containsInOrder = moreAssertions.containsInOrder;
+  var containsMatch = moreAssertions.containsMatch;
 
   function toArrayLike() { return arguments; }
 
@@ -25,6 +26,11 @@
   buster.testCase('containsInOrder', {
     'with arrays': containsInOrderTest(Array),
     'with array-like objects': containsInOrderTest(toArrayLike)
+  });
+
+  buster.testCase('containsMatch', {
+    'with arrays': containsMatchTest(Array),
+    'with array-like objects': containsMatchTest(toArrayLike)
   });
 
   function containsOnceTest(array) {
@@ -74,5 +80,19 @@
     }
   }
 
+  function containsMatchTest(array) {
+    return {
+      'with string matcher': {
+        'allows substrings': function() {
+          var haystack = array('the foo thing', 'the bar thing', 'the baz thing');
+          assert(containsMatch(haystack, 'Bar'));
+        },
+        'refute non-existing substrings': function() {
+          var haystack = array('the foo thing', 'the bar thing', 'the baz thing');
+          refute(containsMatch(haystack, 'Arbitrary'));
+        }
+      }
+    }
+  }
 })(this.buster, require);
 
