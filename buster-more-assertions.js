@@ -53,8 +53,11 @@
     function slice(sequence, from) {
       return Array.prototype.slice.call(sequence, from || 0);
     }
+    function flip(fn) {
+      return function(a, b) { return fn(b, a); }
+    }
     var assertions = buster.assertions;
-    var match = assertions.match;
+    var match = flip(assertions.match);
 
     assertions.add('containsOnce', {
       assert: createContainsOnce(same),
