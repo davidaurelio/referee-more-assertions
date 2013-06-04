@@ -58,6 +58,7 @@
     }
     var assertions = buster.assertions;
     var match = flip(assertions.match);
+    var deepEquals = flip(assertions.deepEquals);
 
     assertions.add('containsOnce', {
       assert: createContainsOnce(same),
@@ -94,8 +95,8 @@
       expectation: 'toContainMatchOnce',
       assertMessage: 'Expected ${0} to contain match for ${1} once',
       refuteMessage: 'Expected ${0} not to contain a match for ${1} exactly once',
-      values: function(haystack, needle) {
-        return [slice(haystack), needle];
+      values: function(haystack, matcher) {
+        return [slice(haystack), matcher];
       }
     });
 
@@ -104,6 +105,36 @@
       expectation: 'toContainMatchesInOrder',
       assertMessage: 'Expected ${0} to contain matches for ${1} in order',
       refuteMessage: 'Expected ${0} not to contain matches for ${1} in order',
+      values: function(sequence) {
+        return [slice(sequence), slice(arguments, 1)];
+      }
+    });
+
+    assertions.add('containsEqual', {
+      assert: createContains(deepEquals),
+      expectation: 'toContainEqual',
+      assertMessage: 'Expected ${0} to contain an element equal to ${1}',
+      refuteMessage: 'Expected ${0} not to contain an element equal to ${1}',
+      values: function(haystack, needle) {
+        return [slice(haystack), needle];
+      }
+    });
+
+    assertions.add('containsEqualOnce', {
+      assert: createContainsOnce(deepEquals),
+      expectation: 'toContainEqualOnce',
+      assertMessage: 'Expected ${0} to contain exactly one element equal to ${1}',
+      refuteMessage: 'Expected ${0} not to contain exactly one element equal to ${1}',
+      values: function(haystack, needle) {
+        return [slice(haystack), needle];
+      }
+    });
+
+    assertions.add('containsEqualsInOrder', {
+      assert: createContainsInOrder(deepEquals),
+      expectation: 'toContainEqualsInOrder',
+      assertMessage: 'Expected ${0} to contain equal elements to ${1} in order',
+      refuteMessage: 'Expected ${0} not to contain equal elements to ${1} in order',
       values: function(sequence) {
         return [slice(sequence), slice(arguments, 1)];
       }
