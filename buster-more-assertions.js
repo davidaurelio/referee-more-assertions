@@ -58,7 +58,7 @@
     }
     var assertions = buster.assertions;
     var match = flip(assertions.match);
-    var deepEquals = flip(assertions.deepEquals);
+    var deepEqual = flip(assertions.deepEqual);
 
     assertions.add('containsOnce', {
       assert: createContainsOnce(same),
@@ -111,7 +111,7 @@
     });
 
     assertions.add('containsEqual', {
-      assert: createContains(deepEquals),
+      assert: createContains(deepEqual),
       expectation: 'toContainEqual',
       assertMessage: 'Expected ${0} to contain an element equal to ${1}',
       refuteMessage: 'Expected ${0} not to contain an element equal to ${1}',
@@ -121,7 +121,7 @@
     });
 
     assertions.add('containsEqualOnce', {
-      assert: createContainsOnce(deepEquals),
+      assert: createContainsOnce(deepEqual),
       expectation: 'toContainEqualOnce',
       assertMessage: 'Expected ${0} to contain exactly one element equal to ${1}',
       refuteMessage: 'Expected ${0} not to contain exactly one element equal to ${1}',
@@ -131,7 +131,7 @@
     });
 
     assertions.add('containsEqualsInOrder', {
-      assert: createContainsInOrder(deepEquals),
+      assert: createContainsInOrder(deepEqual),
       expectation: 'toContainEqualsInOrder',
       assertMessage: 'Expected ${0} to contain equal elements to ${1} in order',
       refuteMessage: 'Expected ${0} not to contain equal elements to ${1} in order',
