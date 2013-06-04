@@ -1,6 +1,6 @@
 {
   "name": "buster-more-assertions",
-  "version": "0.1.1",
+  "version": "0.1.1-1",
   "description": "Additional assertions for buster.js",
   "main": "buster-more-assertions.js",
   "scripts": {

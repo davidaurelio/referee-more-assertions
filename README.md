@@ -45,8 +45,8 @@ of `assert.equals`][equals] to understand how buster checks for equality.
 - `assert.containsEqualOnce(array, value)` passes if exactly one element in
   `array` equals `value`.
 
-- `assert.containsMatchesInOrder(array, matcherA, matcherB, ...)` passes if
-  elements equaling the passed-in values are contained in the given order.
+- `assert.containsEqualsInOrder(array, valueA, valueB, ...)` passes if elements
+  equaling the passed-in values are contained in the given order.
 
 Contribute
 ----------
