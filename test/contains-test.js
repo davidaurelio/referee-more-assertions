@@ -112,5 +112,20 @@
       }
     }
   });
+
+  var containsString = moreAssertions.containsString;
+  buster.testCase('containsString', {
+    'returns true if a string contains a substring': function() {
+      assert(containsString('An arbitrary string', 'arbitrary'));
+    },
+
+    'returns false if a string does not contain a substring': function() {
+      refute(containsString('An arbitrary string', 'not contained'));
+    },
+
+    'works with non-strings as haystack': function() {
+      assert(containsString(Error('An error message'), 'error'));
+    }
+  });
 })(this.buster, require);
 

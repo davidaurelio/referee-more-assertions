@@ -48,6 +48,12 @@ of `assert.equals`][equals] to understand how buster checks for equality.
 - `assert.containsEqualsInOrder(array, valueA, valueB, ...)` passes if elements
   equaling the passed-in values are contained in the given order.
 
+#### Contains Substring
+
+This assertion checks whether a string (or string representation of an object)
+contains a substring.
+
+
 Contribute
 ----------
 

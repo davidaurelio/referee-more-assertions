@@ -13,6 +13,7 @@
     exports.createContains = createContains;
     exports.createContainsOnce = createContainsOnce;
     exports.createContainsInOrder = createContainsInOrder;
+    exports.containsString = containsString;
 
     function createContains(compare) {
       return function(sequence, reference) {
@@ -40,6 +41,10 @@
         }
         return true;
       };
+    }
+
+    function containsString(haystack, needle) {
+      return String(haystack).indexOf(needle) != -1;
     }
 
     function find(sequence, compare, start) {
@@ -138,6 +143,13 @@
       values: function(sequence) {
         return [slice(sequence), slice(arguments, 1)];
       }
+    });
+
+    assertions.add('containsString', {
+      assert: containsString,
+      expectation: 'toContainString',
+      assertMessage: 'Expected ${0} to contain ${1}',
+      refuteMessage: 'Expected ${0} not to contain ${1}'
     });
 
     return exports;
