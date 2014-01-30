@@ -4,7 +4,7 @@
   "description": "Additional assertions for buster.js",
   "main": "buster-more-assertions.js",
   "scripts": {
-    "test": "buster test"
+    "test": "buster-test"
   },
   "repository": {
     "type": "git",
@@ -16,8 +16,11 @@
   ],
   "author": "David Aurelio <dev@david-aurelio.com>",
   "license": "BSD",
+  "peerDependencies": {
+    "buster": "~0.7.8"
+  },
   "devDependencies": {
-    "buster": "~0.6.12",
+    "buster": "~0.7.8",
     "almond": "~0.2.5"
   }
 }

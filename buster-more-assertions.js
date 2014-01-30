@@ -7,7 +7,15 @@
   function factory(exports) {
     if (!exports) { exports = {}; }
 
-    var partial = buster.partial;
+    function partial(func, args) {
+      var n = args.length;
+      return function() {
+        args.push.apply(args, arguments);
+        var value = func.apply(this, args);
+        args.length = n;
+        return value;
+      }
+    }
 
     // export factories for testing and reuse
     exports.createContains = createContains;
@@ -17,13 +25,13 @@
 
     function createContains(compare) {
       return function(sequence, reference) {
-        return find(sequence, partial(compare, reference)) !== -1;
+        return find(sequence, partial(compare, [reference])) !== -1;
       };
     }
 
     function createContainsOnce(compare) {
       return function(sequence, reference) {
-        var compare_ = partial(compare, reference);
+        var compare_ = partial(compare, [reference]);
         var first = find(sequence, compare_);
         return first !== -1 && find(sequence, compare_, first + 1) === -1;
       };
@@ -33,7 +41,7 @@
       return function(sequence, reference) {
         var last = -1;
         for (var i = 1, n = arguments.length; i < n; i += 1) {
-          var foundAt = find(sequence, partial(compare, arguments[i]));
+          var foundAt = find(sequence, partial(compare, [arguments[i]]));
           if (foundAt <= last) {
             return false;
           }
@@ -61,7 +69,7 @@
     function flip(fn) {
       return function(a, b) { return fn(b, a); }
     }
-    var assertions = buster.assertions;
+    var assertions = buster.referee;
     var match = flip(assertions.match);
     var deepEqual = flip(assertions.deepEqual);
 
