@@ -1,7 +1,7 @@
-buster-more-assertions
+referee-more-assertions
 ======================
 
-Additional assertions for [buster.js][].
+Additional assertions for [referee][].
 
 Matchers
 --------
@@ -23,7 +23,7 @@ Similar to `assert.contains`, the following assertions are provided:
 #### Contains by Match
 
 The following assertions check for *matching* elements. See the [documentation
-of `assert.match`][match] to understand how buster matches.
+of `assert.match`][match] to understand how referee matches.
 
 - `assert.containsMatch(array, matcher)` passes if any element in `array`
   matches `matcher`.
@@ -37,7 +37,7 @@ of `assert.match`][match] to understand how buster matches.
 #### Contains by Equality
 
 These assertions check sequence elements by *equality.* Read the [documentation
-of `assert.equals`][equals] to understand how buster checks for equality.
+of `assert.equals`][equals] to understand how referee checks for equality.
 
 - `assert.containsEqual(array, value)` passes if any element in  `array` equals
   `value`.
@@ -61,7 +61,7 @@ Contributions welcome! Please make sure that your assertion functions are
 properly tested. Don’t test `assert.myAssert()`, but only the
 assertion function.
 
-[buster.js]: http://busterjs.org/
-[match]: http://docs.busterjs.org/en/latest/modules/buster-assertions/#match
-[equals]: http://docs.busterjs.org/en/latest/modules/buster-assertions/#equals
+[referee]: http://docs.busterjs.org/en/latest/modules/referee/
+[match]: http://docs.busterjs.org/en/latest/modules/referee/#match
+[equals]: http://docs.busterjs.org/en/latest/modules/referee/#equals
 
